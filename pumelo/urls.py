@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from eslone import views as eslone_views
 urlpatterns = [
+    url(r'^$',eslone_views.index),
     url(r'^admin/', admin.site.urls),
 ]
