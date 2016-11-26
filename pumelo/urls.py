@@ -17,10 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from eslone import views as eslone_views
-from eslone import tests as eslone_tests
+
 urlpatterns = [
-    url(r'^add/',eslone_tests.db_add),
-    url(r'^read/',eslone_tests.db_read),
+    url(r'^add/',eslone_views.db_add),
+    url(r'^read/',eslone_views.db_read),
     url(r'^$',eslone_views.index),
     url(r'^admin/', admin.site.urls),
 ]

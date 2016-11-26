@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from models import Goods
+
 
 # Create your views here.
 def index(request):
@@ -10,3 +12,14 @@ def index(request):
 { "firstName":"Thomas" , "lastName":"Carter" }
 ]
 }''')
+
+
+def db_add(request):
+    goods = Goods(name="pumeloes")
+    goods.save()
+    return HttpResponse("success")
+
+
+def db_read(request):
+    goods = Goods.objects.get(0)
+    return HttpResponse(goods.name)
