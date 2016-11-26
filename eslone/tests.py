@@ -6,9 +6,9 @@ from models import Goods
 # Create your tests here.
 def db_add(request):
     goods = Goods
-    goods.name = "柚子"
+    goods.name = "pumelos"
     goods.save()
-    return HttpResponse("添加成功")
+    return HttpResponse("success")
 
 
 def db_read(reqest):
