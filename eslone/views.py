@@ -16,6 +16,12 @@ def index(request):
 
 def db_add(request):
     goods = Goods(name="pumeloes")
+    goods.price = '12.3'
+    goods.barcode='123456789'
+    goods.package = 'box'
+    goods.level = 'one'
+    goods.origin = 'china'
+    goods.unit = '500g'
     goods.save()
     return HttpResponse("success")
 
