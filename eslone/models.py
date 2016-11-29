@@ -16,6 +16,10 @@ class Goods(models.Model):
     def __unicode__(self):
         return self.name
 
+    def toJSON(self):
+        import json
+        return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
+
 
 class GoodLogs(models.Model):
     goods_id = models.IntegerField(default=0)
