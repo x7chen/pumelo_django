@@ -17,7 +17,7 @@ def index(request):
 def db_add(request):
     goods = Goods(name="pumeloes")
     goods.price = '12.3'
-    goods.barcode='123456789'
+    goods.barcode = '123456789'
     goods.package = 'box'
     goods.level = 'one'
     goods.origin = 'china'
@@ -27,5 +27,5 @@ def db_add(request):
 
 
 def db_read(request):
-    goods = Goods.objects.get(id=1)
+    goods = Goods.objects.get(id=3)
     return HttpResponse(goods.toJSON())
