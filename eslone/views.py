@@ -11,7 +11,7 @@ def index(request):
 { "firstName":"George" , "lastName":"Bush" },
 { "firstName":"Thomas" , "lastName":"Carter" }
 ]
-}''')
+}''', content_type='application/json')
 
 
 def db_add(request):
