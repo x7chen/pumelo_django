@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+import json
 
 
 # Create your models here.
@@ -17,7 +18,6 @@ class Goods(models.Model):
         return self.name
 
     def toJSON(self):
-        import json
         return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
 
 
@@ -32,6 +32,9 @@ class GoodLogs(models.Model):
     def __unicode__(self):
         return self.item
 
+    def toJSON(self):
+        return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
+
 
 class Esls(models.Model):
     label_num = models.CharField(max_length=20)
@@ -43,6 +46,9 @@ class Esls(models.Model):
     def __unicode__(self):
         return self.label_num
 
+    def toJSON(self):
+        return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
+
 
 class ChangeList(models.Model):
     label_id = models.IntegerField(default=0)
@@ -50,6 +56,9 @@ class ChangeList(models.Model):
 
     def __unicode__(self):
         return self.label_id
+
+    def toJSON(self):
+        return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
 
 
 class TaskLogs(models.Model):
@@ -60,3 +69,5 @@ class TaskLogs(models.Model):
     def __unicode__(self):
         return self.change_list_id
 
+    def toJSON(self):
+        return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
