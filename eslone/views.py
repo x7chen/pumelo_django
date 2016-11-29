@@ -22,4 +22,4 @@ def db_add(request):
 
 def db_read(request):
     goods = Goods.objects.get(id=1)
-    return HttpResponse(goods.name)
+    return HttpResponse(goods.toJSON())
