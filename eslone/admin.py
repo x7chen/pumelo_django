@@ -4,9 +4,9 @@ from models import *
 
 # Register your models here.
 class GoodsAdmin(admin.ModelAdmin):
-    # 可编辑的表单
+    list_filter = ['barcode']
+    search_fields = ['barcode']
     fields = ['name', 'price', 'package', 'origin', 'barcode']
-    # 显示的字段
     list_display = ('name', 'price', 'package', 'origin', 'barcode')
 
 
