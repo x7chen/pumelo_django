@@ -6,7 +6,7 @@ from models import *
 class GoodsAdmin(admin.ModelAdmin):
     list_filter = ['barcode']
     search_fields = ['barcode']
-    # fields = ['name', 'price', 'package', 'origin', 'barcode']
+    fields = ['name', 'price', 'package', 'origin', 'barcode']
     list_display = ('name', 'price', 'package', 'origin', 'barcode')
 
 
