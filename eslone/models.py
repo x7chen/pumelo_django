@@ -23,7 +23,7 @@ class Goods(models.Model):
 
 class GoodLogs(models.Model):
     goods = models.ForeignKey(Goods)
-    goods_id = models.IntegerField(default=0)
+    # goods_id = models.IntegerField(default=0)
     item = models.CharField(max_length=50)
     before = models.CharField(max_length=200)
     after = models.CharField(max_length=200)
@@ -40,7 +40,7 @@ class GoodLogs(models.Model):
 class Esls(models.Model):
     goods = models.ForeignKey(Goods)
     label_num = models.CharField(max_length=20)
-    goods_id = models.IntegerField(default=0)
+    # goods_id = models.IntegerField(default=0)
     location = models.CharField(max_length=200)
     label_type = models.CharField(max_length=20)
     update_time = models.CharField(max_length=50)
@@ -54,7 +54,7 @@ class Esls(models.Model):
 
 class ChangeList(models.Model):
     esl = models.ForeignKey(Esls)
-    label_id = models.IntegerField(default=0)
+    # label_id = models.IntegerField(default=0)
     indate = models.CharField(max_length=50)
 
     def __unicode__(self):
@@ -66,7 +66,7 @@ class ChangeList(models.Model):
 
 class TaskLogs(models.Model):
     change_item = models.ForeignKey(ChangeList)
-    change_list_id = models.IntegerField(default=0)
+    # change_list_id = models.IntegerField(default=0)
     result = models.CharField(max_length=20)
     notes = models.CharField(max_length=1000)
 
