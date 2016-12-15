@@ -29,6 +29,6 @@ def db_add(request):
 
 def db_read(request):
     # goods = Goods.objects.get(id=3)
-    goods_id = int(request.POST("goods_id"))
+    goods_id = int(request.POST("goods_id").encode("ascii"))
     goods = get_object_or_404(Goods, pk=goods_id)
     return HttpResponse(goods.toJSON())
