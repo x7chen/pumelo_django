@@ -30,6 +30,7 @@ def db_add(request):
 def db_read(request):
     # goods = Goods.objects.get(id=3)
     goods_id = int(request.POST("goods_id"))
-    goods = get_object_or_404(Goods, id=goods_id)
+    # goods = get_object_or_404(Goods, id=goods_id)
     # goods = Goods.objects.get(id=5)
-    return HttpResponse(goods.toJSON())
+    return HttpResponse(goods_id)
+    # return HttpResponse(goods.toJSON())
