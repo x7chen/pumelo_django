@@ -31,5 +31,5 @@ def db_read(request):
     # goods = Goods.objects.get(id=3)
     goods_id = int(request.POST("goods_id").encode("ascii"))
     # goods = get_object_or_404(Goods, pk=goods_id)
-    goods = Goods.objects.get(id=3)
+    goods = Goods.objects.get(id=5)
     return HttpResponse(goods.toJSON())
