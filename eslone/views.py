@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from models import Goods
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -27,5 +28,7 @@ def db_add(request):
 
 
 def db_read(request):
-    goods = Goods.objects.get(id=3)
+    # goods = Goods.objects.get(id=3)
+    goods_id = int(request.POST("goods_id"))
+    goods = get_object_or_404(Goods, pk=goods_id)
     return HttpResponse(goods.toJSON())
