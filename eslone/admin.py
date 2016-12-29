@@ -12,7 +12,7 @@ class GoodsAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         super(GoodsAdmin, self).save_model(request, obj, form, change)
-        goods_log = GoodLogs
+        goods_log = GoodLogs()
         if change:
             obj_original = self.model.objects.get(pk=obj.pk)
             goods_log.goods = obj.id
