@@ -11,7 +11,6 @@ class GoodsAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'package', 'origin', 'barcode')
 
     def save_model(self, request, obj, form, change):
-        super(GoodsAdmin, self).save_model(request, obj, form, change)
         goods_log = GoodLogs()
         if change:
             obj_original = self.model.objects.get(pk=obj.pk)
@@ -28,7 +27,7 @@ class GoodsAdmin(admin.ModelAdmin):
             goods_log.after = obj.price
             goods_log.date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             goods_log.save()
-            return
+        super(GoodsAdmin, self).save_model(request, obj, form, change)
 
 
 admin.site.register(Goods, GoodsAdmin)
