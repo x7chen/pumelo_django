@@ -19,6 +19,7 @@ class GoodsAdmin(admin.ModelAdmin):
             goods_log.before = obj_original.price
             goods_log.after = obj.price
             goods_log.date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            goods_log.operator = request.user
             goods_log.save()
         else:
             goods_log.goods = obj
@@ -26,6 +27,7 @@ class GoodsAdmin(admin.ModelAdmin):
             goods_log.before = "-"
             goods_log.after = obj.price
             goods_log.date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            goods_log.operator = request.user
             goods_log.save()
         super(GoodsAdmin, self).save_model(request, obj, form, change)
 
