@@ -15,14 +15,14 @@ class GoodsAdmin(admin.ModelAdmin):
         goods_log = GoodLogs()
         if change:
             obj_original = self.model.objects.get(pk=obj.pk)
-            goods_log.goods = obj.id
+            goods_log.goods = obj
             goods_log.item = "price"
             goods_log.before = obj_original.price
             goods_log.after = obj.price
             goods_log.date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             goods_log.save()
         else:
-            goods_log.goods = obj.id
+            goods_log.goods = obj
             goods_log.item = "price"
             goods_log.before = "-"
             goods_log.after = obj.price
