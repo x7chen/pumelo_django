@@ -14,7 +14,7 @@ class GoodsAdmin(admin.ModelAdmin):
         goods_log = GoodLogs()
         if change:
             obj_original = self.model.objects.get(pk=obj.pk)
-            for field in Goods.get_fields():
+            for field in obj_original.get_fields():
                 if (field == "name") and (obj_original.name != obj.name):
                     goods_log.item = "name"
                     goods_log.before = obj_original.name
