@@ -20,6 +20,9 @@ class Goods(models.Model):
     def toJSON(self):
         return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
 
+    def get_fields(self):
+        return ("name", "price", "package", "unit", "origin", "barcode", "level")
+
 
 class GoodLogs(models.Model):
     goods = models.ForeignKey(Goods)
