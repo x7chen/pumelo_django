@@ -16,38 +16,45 @@ class GoodsAdmin(admin.ModelAdmin):
             obj_original = self.model.objects.get(pk=obj.pk)
             for field in obj_original.get_fields():
                 goods_log = GoodLogs()
+                goods_log.goods = obj
+                goods_log.date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                goods_log.operator = request.user
                 if (field == "name") and (obj_original.name != obj.name):
                     goods_log.item = "name"
                     goods_log.before = obj_original.name
                     goods_log.after = obj.name
+                    goods_log.save()
                 if (field == "price") and (obj_original.price != obj.price):
                     goods_log.item = "price"
                     goods_log.before = obj_original.price
                     goods_log.after = obj.price
+                    goods_log.save()
                 if (field == "package") and (obj_original.package != obj.package):
                     goods_log.item = "package"
                     goods_log.before = obj_original.package
                     goods_log.after = obj.package
+                    goods_log.save()
                 if (field == "unit") and (obj_original.unit != obj.unit):
                     goods_log.item = "unit"
                     goods_log.before = obj_original.unit
                     goods_log.after = obj.unit
+                    goods_log.save()
                 if (field == "origin") and (obj_original.origin != obj.origin):
                     goods_log.item = "origin"
                     goods_log.before = obj_original.origin
                     goods_log.after = obj.origin
+                    goods_log.save()
                 if (field == "barcode") and (obj_original.barcode != obj.barcode):
                     goods_log.item = "barcode"
                     goods_log.before = obj_original.barcode
                     goods_log.after = obj.barcode
+                    goods_log.save()
                 if (field == "level") and (obj_original.level != obj.level):
                     goods_log.item = "level"
                     goods_log.before = obj_original.level
                     goods_log.after = obj.level
-                goods_log.goods = obj
-                goods_log.date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                goods_log.operator = request.user
-                goods_log.save()
+                    goods_log.save()
+
             super(GoodsAdmin, self).save_model(request, obj, form, change)
         else:
             super(GoodsAdmin, self).save_model(request, obj, form, change)
