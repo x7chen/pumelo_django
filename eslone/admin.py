@@ -11,10 +11,11 @@ class GoodsAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'package', 'origin', 'barcode')
 
     def save_model(self, request, obj, form, change):
-        goods_log = GoodLogs()
+
         if change:
             obj_original = self.model.objects.get(pk=obj.pk)
             for field in obj_original.get_fields():
+                goods_log = GoodLogs()
                 if (field == "name") and (obj_original.name != obj.name):
                     goods_log.item = "name"
                     goods_log.before = obj_original.name
@@ -50,6 +51,7 @@ class GoodsAdmin(admin.ModelAdmin):
             super(GoodsAdmin, self).save_model(request, obj, form, change)
         else:
             super(GoodsAdmin, self).save_model(request, obj, form, change)
+            goods_log = GoodLogs()
             goods_log.goods = obj
             goods_log.item = "add"
             goods_log.before = "-"
